@@ -64,6 +64,17 @@ void deSpace(NSString *inputString) {
     NSLog(@"The current memory address of deSpaceIT is %p", deSpaceIt);
 }
 
+void removePunchuation(NSString *inputString) {
+    // remove Punchuation
+    NSString *punchuationFree = [inputString stringByTrimmingCharactersInSet:[NSCharacterSet punctuationCharacterSet]];
+    
+    NSLog(@"The punchuatuionFree string is: %@", punchuationFree);
+    
+    NSLog(@"The current memory address of the punctuation Free string is %p", punchuationFree);
+    
+}
+
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // take in input
@@ -72,7 +83,7 @@ int main(int argc, const char * argv[]) {
         
         NSString *choice = @"";
         
-        while (![choice isEqualToString:@"6"]) {
+        while (![choice isEqualToString:@"7"]) {
             printf("Input a string:");
             fgets(inputChars, 255, stdin);
             
@@ -93,7 +104,8 @@ int main(int argc, const char * argv[]) {
                 printf("\t3\tto Numbersize\n");
                 printf("\t4\tto Canadianize\n");
                 printf("\t5\tto switch \"-\"'s for \" \"'s\n");
-                printf("\t6\tto exit\n");
+                printf("\t6\tto remove punctuation\n");
+                printf("\t7\tto exit\n");
                 
                 fgets(choiceChars, 255, stdin);
                 
@@ -103,9 +115,10 @@ int main(int argc, const char * argv[]) {
                 
                 switch (choiceInt) {
                     case 1:
+                    {
                         upperCase(inputString);
                         break;
-                        
+                    }
                     case 2:
                         lowerCase(inputString);
                         break;
@@ -117,6 +130,11 @@ int main(int argc, const char * argv[]) {
                         break;
                     case 5:
                         deSpace(inputString);
+                        break;
+                    case 6:
+                        removePunchuation(inputString);
+                        break;
+                    case 7:
                         break;
                     default:
                         NSLog(@"That wasn't a valid response, let's start over...");
