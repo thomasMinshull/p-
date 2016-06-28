@@ -8,6 +8,42 @@
 
 #import <Foundation/Foundation.h>
 
+void upperCase(NSString *inputString) {
+    //upper case
+    
+    NSString *upperCase = [inputString uppercaseString];
+    
+    NSLog(@"upperCase is: %@", upperCase);
+    
+    NSLog(@"The current memory address of upperCase is %p", upperCase);
+}
+
+void lowerCase(NSString *inputString) {
+    //lower case
+    
+    NSString *lowerCase = [inputString lowercaseString];
+    
+    NSLog(@"lowerCase is: %@", lowerCase);
+    
+    NSLog(@"The current memory address of lowerCase is %p", lowerCase);
+}
+
+void Numberize(NSString *inputString) {
+    // check if the input string is 0
+    if ([[inputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@"0"]) {
+        NSLog(@"The numberical equivalent of inputString is: %f", 0.0);
+    } else {
+        // check if not a number
+        float numberize = [inputString floatValue];
+        
+        if (numberize != 0) {
+            NSLog(@"The numberical equivalent of inputString is: %f", numberize);
+        } else {
+            NSLog(@"inputString is not a number");
+        }
+    }
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // take in input
@@ -38,58 +74,52 @@ int main(int argc, const char * argv[]) {
                 
                 NSString *choice = [[NSString stringWithUTF8String:choiceChars] stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 
+                int choiceInt = [choice integerValue];
                 
+                switch (choiceInt) {
+                    case 1:
+                        upperCase(inputString);
+                        break;
+                        
+                    case 2:
+                        lowerCase(inputString);
+                        break;
+                    case 3;
+                        Numberize(inputString);
+                        break;
+                    case 4;
+                        
+                    
+                    default:
+                        break;
+                }
             }
             
 
             
         }
         
-        printf("Input a string:");
-        
-        fgets(inputChars, 255, stdin);
-        
-        printf("Your string is %s\n", inputChars);
-        
-        NSString *inputString = [[NSString stringWithUTF8String:inputChars] stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//        printf("Input a string:");
+//        
+//        fgets(inputChars, 255, stdin);
+//        
+//        printf("Your string is %s\n", inputChars);
+//        
+//        NSString *inputString = [[NSString stringWithUTF8String:inputChars] stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
         
         NSLog(@"Input was: %@", inputString);
         
         NSLog(@"The current memory address of the inputString is %p", inputString);
         
-        // get input from user what which task do they want completed, use if statement to run just that task
+//        // get input from user what which task do they want completed, use if statement to run just that task
+//        
+//        upperCase();
         
-        //upper case
-        
-        NSString *upperCase = [inputString uppercaseString];
-        
-        NSLog(@"upperCase is: %@", upperCase);
-        
-        NSLog(@"The current memory address of upperCase is %p", upperCase);
-        
-        //lower case
-        
-        NSString *lowerCase = [inputString lowercaseString];
-        
-        NSLog(@"lowerCase is: %@", lowerCase);
-        
-        NSLog(@"The current memory address of lowerCase is %p", lowerCase);
+//        lowerCase();
         
         //Numberize
 
-        // check if the input string is 0
-        if ([[inputString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] isEqualToString:@"0"]) {
-            NSLog(@"The numberical equivalent of inputString is: %f", 0.0);
-        } else {
-            // check if not a number
-            float numberize = [inputString floatValue];
-            
-            if (numberize != 0) {
-                NSLog(@"The numberical equivalent of inputString is: %f", numberize);
-            } else {
-                NSLog(@"inputString is not a number");
-            }
-        }
+//        Numberize();
         
         
         // Canadianize
